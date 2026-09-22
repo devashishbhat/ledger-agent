@@ -1,0 +1,12 @@
+{
+  "ticker": "NVDA",
+  "company": "NVIDIA CORP",
+  "cik": 1045810,
+  "source_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000029/nvda-20240128.htm",
+  "form": "10-K",
+  "accession": "0001045810-24-000029",
+  "filing_date": "2024-02-21",
+  "report_date": "2024-01-28",
+  "fiscal_year": 2024,
+  "primary_document": "nvda-20240128.htm"
+}

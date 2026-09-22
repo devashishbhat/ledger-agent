@@ -1,0 +1,12 @@
+{
+  "ticker": "AAPL",
+  "company": "Apple Inc.",
+  "cik": 320193,
+  "source_url": "https://www.sec.gov/Archives/edgar/data/320193/000032019322000108/aapl-20220924.htm",
+  "form": "10-K",
+  "accession": "0000320193-22-000108",
+  "filing_date": "2022-10-28",
+  "report_date": "2022-09-24",
+  "fiscal_year": 2022,
+  "primary_document": "aapl-20220924.htm"
+}

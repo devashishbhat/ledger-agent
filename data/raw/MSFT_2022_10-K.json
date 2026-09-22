@@ -1,0 +1,12 @@
+{
+  "ticker": "MSFT",
+  "company": "MICROSOFT CORP",
+  "cik": 789019,
+  "source_url": "https://www.sec.gov/Archives/edgar/data/789019/000156459022026876/msft-10k_20220630.htm",
+  "form": "10-K",
+  "accession": "0001564590-22-026876",
+  "filing_date": "2022-07-28",
+  "report_date": "2022-06-30",
+  "fiscal_year": 2022,
+  "primary_document": "msft-10k_20220630.htm"
+}
