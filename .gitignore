@@ -8,14 +8,15 @@ wheels/
 .pytest_cache/
 
 # Virtual environments
-.venv/
+.venv
 
 # Environment variables
 .env
 
-# Downloaded and generated data
 data/
 evals/results/*
 !evals/results/.gitkeep
-
 .DS_Store
+notes.md
+scratch.py
+apple_2024.txt
