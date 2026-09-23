@@ -42,6 +42,9 @@ HIDDEN_STYLE = re.compile(
 PAGE_NUMBER = re.compile(r"^(?:page\s+)?\d{1,3}$", re.IGNORECASE)
 # Other repeated junk lines found at the top/bottom of every page.
 BOILERPLATE = {"table of contents"}
+# A cell that is only an item number, like "Item 7." or "Item 1A." — used to
+# spot section headings that a company laid out as a one-row table.
+ITEM_CELL = re.compile(r"^(?:part\s+[ivx]+\s*[.,\-–—]?\s*)?item\s+\d{1,2}[abc]?\s*[.:]?$", re.I)
 
 # Table cells that are just formatting (a lone "$" or ")") — drop them so a
 # row reads "Total net sales | 391,035" instead of "Total net sales | $ | 391,035".
@@ -66,18 +69,28 @@ def html_to_text(html: str) -> str:
         tag.decompose()
 
     # 4. Flatten every table into rows of "cell | cell | cell".
+        # 4. Flatten every table into rows of "cell | cell | cell".
     for table in soup.find_all("table"):
         rows = []
         for tr in table.find_all("tr"):
             cells = [cell.get_text(" ", strip=True) for cell in tr.find_all(["td", "th"])]
             cells = [c for c in cells if c and c not in FORMATTING_CELLS]
             if cells:
-                rows.append(" | ".join(cells))
-        if rows:
-            flat = "\n\n[TABLE]\n" + "\n".join(rows) + "\n[/TABLE]\n\n"
-            table.replace_with(NavigableString(flat))
-        else:
+                rows.append(cells)
+        if not rows:
             table.decompose()             # empty layout tables: just remove
+            continue
+        # Some companies (Amazon, for one) lay out their SECTION HEADINGS as a
+        # tiny one-row table: "Item 7. | Management's Discussion...". Left as a
+        # table, the heading would never be detected, and every chunk in the
+        # filing would be labelled "Cover page". So a short table whose first
+        # cell looks like "Item 7." becomes an ordinary heading line instead.
+        # A real table of contents has many rows, so it is not affected.
+        if len(rows) <= 2 and ITEM_CELL.match(rows[0][0]):
+            table.replace_with(NavigableString("\n\n" + " ".join(rows[0]) + "\n\n"))
+            continue
+        flat = "\n\n[TABLE]\n" + "\n".join(" | ".join(r) for r in rows) + "\n[/TABLE]\n\n"
+        table.replace_with(NavigableString(flat))
 
     # 5. Make line breaks where a browser would. <br> becomes a newline;
     #    block tags get a newline before and after. Inline tags (<span>,
