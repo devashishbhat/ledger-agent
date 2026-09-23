@@ -1,0 +1,23 @@
+{"query": "How much money did Apple bring in during fiscal 2024?", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["391,035"]}
+{"query": "What were Microsoft's earnings in fiscal 2024?", "ticker": "MSFT", "fiscal_year": 2024, "expected_any": ["88,136"]}
+{"query": "How big was NVIDIA's business in fiscal 2024?", "ticker": "NVDA", "fiscal_year": 2024, "expected_any": ["60,922"]}
+{"query": "What did Tesla sell in total in 2023?", "ticker": "TSLA", "fiscal_year": 2023, "expected_any": ["96,773"]}
+{"query": "How profitable was Amazon in 2023?", "ticker": "AMZN", "fiscal_year": 2023, "expected_any": ["30,425"]}
+{"query": "Apple research and development expense fiscal 2024", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["31,370"]}
+{"query": "Apple research and development expense fiscal 2022", "ticker": "AAPL", "fiscal_year": 2022, "expected_any": ["26,251"]}
+{"query": "Apple gross margin fiscal 2024", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["180,683"]}
+{"query": "Apple cost of sales fiscal 2024", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["210,352"]}
+{"query": "Apple diluted earnings per share fiscal 2024", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["6.08"]}
+{"query": "Apple net sales in Greater China fiscal 2024", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["66,952"]}
+{"query": "Apple services revenue fiscal 2024", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["96,169"]}
+{"query": "Apple provision for income taxes fiscal 2024", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["29,749"]}
+{"query": "NVIDIA revenue the year before fiscal 2024", "ticker": "NVDA", "fiscal_year": 2023, "expected_any": ["26,974"]}
+{"query": "Microsoft revenue fiscal 2022", "ticker": "MSFT", "fiscal_year": 2022, "expected_any": ["198,270"]}
+{"query": "Amazon total net sales 2022", "ticker": "AMZN", "fiscal_year": 2022, "expected_any": ["513,983"]}
+{"query": "Amazon total net sales 2024", "ticker": "AMZN", "fiscal_year": 2024, "expected_any": ["637,959"]}
+{"query": "Tesla total revenues 2022", "ticker": "TSLA", "fiscal_year": 2022, "expected_any": ["81,462"]}
+{"query": "Tesla total revenues 2024", "ticker": "TSLA", "fiscal_year": 2024, "expected_any": ["97,690"]}
+{"query": "Apple total net sales fiscal 2022", "ticker": "AAPL", "fiscal_year": 2022, "expected_any": ["394,328"]}
+{"query": "What does Tesla say about competition in the automotive market?", "ticker": "TSLA", "fiscal_year": 2024, "expected_any": ["We face strong competition for our products and services"]}
+{"query": "What does Apple say about outsourcing its logistics and transportation?", "ticker": "AAPL", "fiscal_year": 2024, "expected_any": ["outsourced much of its transportation and logistics management"]}
+{"query": "What supply chain risks does Microsoft describe for its devices and datacenters?", "ticker": "MSFT", "fiscal_year": 2024, "expected_any": ["There are limited suppliers for certain device and datacenter components"]}

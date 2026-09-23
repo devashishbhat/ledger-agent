@@ -1,6 +1,6 @@
 """
-ledger/config.py — every setting for the project, in one place.
-Other files do `from ledger import config` and then read `config.SOMETHING`.
+ledger/config.py — Contains every setting for the project.
+Other files use `from ledger import config` and then read `config.SOMETHING`.
 If you ever want to change a model, a folder, or a limit, change it HERE,
 not scattered across the code.
 """
