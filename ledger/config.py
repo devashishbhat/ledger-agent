@@ -74,8 +74,8 @@ JUDGE_MODEL = os.environ.get("LEDGER_JUDGE_MODEL", FAST_MODEL)
 # FILL THESE IN from Anthropic's pricing page. While they are None, cost
 # is reported as "unknown" instead of a made-up number.
 PRICES_PER_MTOK: dict[str, tuple[float | None, float | None]] = {
-MAIN_MODEL: (None, None),
-FAST_MODEL: (None, None),
+MAIN_MODEL: (2.00,10.00),
+FAST_MODEL: (1.00,5.00),
 }
 # How many times the agent may search before giving up (first try + retries).
 MAX_ATTEMPTS = 2
