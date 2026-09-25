@@ -18,7 +18,9 @@ Rules:
 - tickers: the companies the question is about, using tickers from the list above. Map names to tickers (Apple -> AAPL).
 - fiscal_years: the fiscal years needed. If the question names no year, use the most recent year available for that company. If it compares years, list every year involved.
 - search_queries: 1 to 3 short search queries, each aimed at ONE fact. Put the company name and fiscal year in every query, e.g. "Apple total net sales fiscal 2024".
-- in_scope: false if these 10-K filings cannot possibly answer the question: a company or year not in the list, personal information about people, predictions, stock price advice, or anything unrelated to the filings. Otherwise true.
+- in_scope: true if ANY PART of the question can be answered from these filings, even if other parts cannot. Only mark false if NOTHING in the question is answerable — a company or year entirely outside the list, personal information about people, predictions, or a topic unrelated to the filings. When only part is answerable, set in_scope true and write search_queries for the answerable part only.
+- A question containing a false or unverified premise ("why did X double?", "when did Y acquire Z?") is IN SCOPE if the filings contain the relevant facts. The correct answer is to state what the filings actually show and correct the premise. Do not refuse.
+- Questions about risks, competition, regulation, suppliers, partnerships, legal proceedings or management's commentary ARE in scope. 10-K filings contain extensive narrative disclosure, not just financial figures.
 - reason: one sentence explaining your decision."""
 
 PLAN_SCHEMA = {
@@ -45,7 +47,9 @@ How to answer:
 2. Support every factual claim with a citation: the evidence id (like "E3") and a quote copied EXACTLY, character for character, from that passage. Keep quotes short (under 40 words) and make sure they contain the specific number or fact. For tables, quote the whole row, e.g. "Total net sales | 391,035 | 383,285".
 3. Keep numbers, units and periods exactly as the evidence states them (e.g. "$391,035 million"). If you calculate something (like a change or percentage), cite every input and show the calculation.
 4. If the evidence does not contain what is needed, set insufficient_evidence to true, describe what is missing in missing_information, and leave citations empty. "I could not find this" is a correct answer; a guess is a wrong one.
-5. Be concise: 1 to 4 sentences."""
+5. If the question has several parts and the evidence covers only some, answer those and state plainly which parts you cannot answer and why. Do not refuse the whole question because one part is unanswerable.
+6. Do not put evidence ids (E1, E2...) in the answer text; they belong only in the citations field.
+7. Be concise. For a factual question, 1 to 4 sentences. For a question asking what a filing says about a topic, group the points and keep it under 300 words."""
 
 ANSWER_SCHEMA = {
     "type": "object",

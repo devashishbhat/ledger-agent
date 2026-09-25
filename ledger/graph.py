@@ -190,7 +190,7 @@ def answer_node(state: LedgerState) -> dict:
             name="answer", model=config.MAIN_MODEL, system=ANSWER_SYSTEM, user=user_message,
             tool_name="submit_answer",
             tool_description="Submit the final answer with exact-quote citations.",
-            schema=ANSWER_SCHEMA, max_tokens=1500,
+            schema=ANSWER_SCHEMA, max_tokens=3000,
         )
 
     # Check every citation IN CODE: does the quote really exist in that passage?
@@ -256,7 +256,11 @@ def route_after_verify(state: LedgerState) -> str:
         return "finalize"
     if state.get("attempts", 0) < config.MAX_ATTEMPTS:
         return "retrieve"            # try again with a better search
-    return "refuse"                  # out of attempts: refuse rather than guess
+    # Out of attempts. A partially supported answer with real citations beats
+    # a refusal, as long as the caveat is visible. Unsupported still refuses.
+    if state["verdict"] == "partial" and state.get("citations"):
+        return "finalize"
+    return "refuse"
 
 
 # ---------------------------------------------------------------------------
@@ -266,6 +270,10 @@ def finalize_node(state: LedgerState) -> dict:
     answer = state["answer"]
     if config.DEFENSES_ENABLED:
         answer = sanitize_answer(answer)
+    if state["verdict"] == "partial":
+        unsupported = "; ".join(state.get("unsupported_claims", []))
+        answer += ("\n\n[Partially verified: some claims in this answer are not "
+                   f"fully supported by the cited evidence{': ' + unsupported if unsupported else ''}.]")
     cited_ids = {c["chunk_id"] for c in state["citations"]}
     return {"result": {
         "status": "answered",
